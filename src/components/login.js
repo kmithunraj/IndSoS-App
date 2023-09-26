@@ -9,7 +9,7 @@ function LandingPage() {
         <>
             <Header />
             <AlertBox />
-            <div className='LandingPage'>
+            <div className='Login'>
             </div>
             <Footer />
         </>

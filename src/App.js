@@ -1,22 +1,30 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import LandingPage from './components/landingpage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './components/login';
 import Home from './components/home';
 import Profile from './components/profile';
 import Search from './components/search';
-import Chat from './components/chat'; 
-
+import Chat from './components/chat';
+import { useState } from 'react';
 
 function App() {
+  
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/chat" element={<Chat />} />
+          {authenticated ? (
+            <>
+              <Route path="/home" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/chat" element={<Chat />} />
+            </>
+          ) : (
+            <Route path="/" element={<Login />} />
+          )}
         </Routes>
       </BrowserRouter>
     </div>
