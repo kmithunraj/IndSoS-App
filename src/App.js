@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function App() {
   
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   return (
     <div className="App">
