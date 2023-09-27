@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/login';
 import Home from './components/home';
 import Profile from './components/profile';
@@ -8,7 +8,6 @@ import Chat from './components/chat';
 import { useState } from 'react';
 
 function App() {
-  
   const [authenticated, setAuthenticated] = useState(true);
 
   return (
@@ -21,9 +20,17 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/chat" element={<Chat />} />
+              <Route
+                path="/*"
+                element={<Navigate to="/home" />}
+              />
+              <Route path="/login" element={<Navigate to="/home" />} />
             </>
           ) : (
-            <Route path="/" element={<Login />} />
+            <>
+                 <Route path="/login" element={<Login />} />
+                  <Route path="/*" element={<Navigate to="/login" />} />
+            </>
           )}
         </Routes>
       </BrowserRouter>
